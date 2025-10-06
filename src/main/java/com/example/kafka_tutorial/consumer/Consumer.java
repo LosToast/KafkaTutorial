@@ -1,5 +1,6 @@
 package com.example.kafka_tutorial.consumer;
 
+import com.example.kafka_tutorial.payload.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,6 +13,11 @@ public class Consumer {
 
     @KafkaListener(topics = "topic1" , groupId = "myGroup")
     public void consume(String Message){
+        logger.info(String.format("Message Recived %s" , Message));
+    }
+
+    @KafkaListener(topics = "jsontopic1" , groupId = "myGroup")
+    public void consumejson(User Message){
         logger.info(String.format("Message Recived %s" , Message));
     }
 }
